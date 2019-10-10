@@ -3,7 +3,8 @@
     <h2>Brewdog App</h2>
     <div class="wrapper">
       <beers-list :beers='beers'></beers-list>
-      <beer-detail :beer='selectedBeer'></beer-detail>
+      <beer-detail :beer='selectedBeer' class="details"></beer-detail>
+      <fav-beer :beers='favouriteBeer' class="details"></fav-beer>
     </div>
   </div>
 </template>
@@ -11,14 +12,16 @@
 <script>
 import {eventBus} from './main.js';
 import BeersList from './components/BeersList.vue';
-import BeerDetail from './components/BeerDetail.vue'
+import BeerDetail from './components/BeerDetail.vue';
+import FavBeer from './components/FavBeer.vue';
 
 export default {
   name: 'app',
   data(){
     return{
       beers: [],
-      selectedBeer: null
+      selectedBeer: null,
+      favouriteBeer: []
     };
   },
 
@@ -30,25 +33,40 @@ export default {
     eventBus.$on('beer-selected', (beer) =>{
       this.selectedBeer = beer;
     })
+    
+    eventBus.$on('beer-favourited', (beer) =>{
+      this.favouriteBeer.push(beer)
+    })
 
   },
 
   components: {
     "beers-list": BeersList,
-    "beer-detail": BeerDetail
+    "beer-detail": BeerDetail,
+    "fav-beer": FavBeer
   }
 
 
 }
 
 
-
-
-
-
-
-
 </script>
 
 <style lang="css" scoped>
+.wrapper {
+  display: flex;
+  justify-content: space-around;
+  /* background-color: #CBF3F0; */
+}
+
+h2 {
+  text-align: center;
+}
+.details {
+  /* border-style: inset; */
+  /* border: 3px solid red; */
+  width: 20%;
+  padding: 10px;
+}
+
 </style>
