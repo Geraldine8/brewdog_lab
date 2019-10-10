@@ -15,6 +15,7 @@ import BeersList from './components/BeersList.vue';
 import BeerDetail from './components/BeerDetail.vue';
 import FavBeer from './components/FavBeer.vue';
 
+
 export default {
   name: 'app',
   data(){
@@ -33,10 +34,18 @@ export default {
     eventBus.$on('beer-selected', (beer) =>{
       this.selectedBeer = beer;
     })
-    
+
     eventBus.$on('beer-favourited', (beer) =>{
-      this.favouriteBeer.push(beer)
+      if (this.favouriteBeer.includes(beer) === false) {
+        this.favouriteBeer.push(beer)
+      }
     })
+
+    eventBus.$on('beer-favourite-deleted', (beer) =>{
+      const beerPosition = this.favouriteBeer.indexOf(beer);
+      this.favouriteBeer.splice(beerPosition, 1);
+    })
+
 
   },
 

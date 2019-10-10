@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="">
     <span>
-      <beers-list-name v-for="(beer, index) in beers" :beer="beer" :key="index"></beers-list-name>
+      <beers-list-name v-for="(beer, index) in beers" :beer="beer" :key="index" :shouldDelete='true'></beers-list-name>
     </span>
   </div>
 </template>

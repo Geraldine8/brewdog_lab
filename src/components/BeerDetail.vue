@@ -2,7 +2,6 @@
   <div v-if="beer">
     <h3>{{beer.name}}</h3>
     <button v-on:click="addToFavourites">Add to favourite</button>
-    <!-- <button v-on:click="addToFavourites"</button> -->
     <p>Description: {{beer.description}}</p>
     <p>Tagline: {{beer.tagline}}</p>
     <p>First_brewed: {{beer.first_brewed}}</p>
@@ -23,8 +22,12 @@ export default {
       eventBus.$emit('beer-favourited', this.beer)
     }
   }
+
 }
 </script>
+
+
+
 
 <style lang="css" scoped>
 
