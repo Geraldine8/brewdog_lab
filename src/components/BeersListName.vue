@@ -1,8 +1,11 @@
 <template lang="html">
-  <span>
-    <li v-on:click="handleClick">{{beer.name}}</li>
-    <button v-if="shouldDelete" v-on:click="handleDelete">Remove</button>
-  </span>
+  <div>
+    <span>
+      <li v-on:click="handleClick">
+        {{beer.name}} <button v-if="shouldDelete" v-on:click="handleDelete" class="btn">Remove</button>
+      </li>
+    </span>
+  </div>
 </template>
 
 <script>
@@ -22,4 +25,13 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+.btn {
+  /* display: flex;
+   flex-direction: row; */
+  /* margin-right:100px; */
+  /* display:inline-block; */
+
+
+}
 </style>
